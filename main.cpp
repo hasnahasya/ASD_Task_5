@@ -115,7 +115,8 @@ void runMenu(int menu) {
         // insert last music
         //-------------your code here-------------
         cout<<"UNDER MAIN TENIS"<<endl;
-
+        P = inputMusic();
+        insertLast(L,P);
         //----------------------------------------
         cout<<"press enter";getche();
         break;
@@ -133,7 +134,8 @@ void runMenu(int menu) {
         // play last music
         //-------------your code here-------------
         cout<<"UNDER MAIN TENIS"<<endl;
-
+        P = last(L);
+        playMusic(P);
         //----------------------------------------
         break;
     case 6:
@@ -142,9 +144,13 @@ void runMenu(int menu) {
         cout<<"input music filename (.wav) : ";
         cin>>x.name;
         P = findElmByName(L, x);
-        if(P != NULL){
+        if(P == NULL){
             cout<<"music found"<<endl;
-        }
+        }else{
+            cout<<" ID      : "<<P->info.ID<<endl;
+            cout<<" Name    : "<<P->info.name<<endl;
+            cout<<" Location: "<<P->info.location<<endl;
+         }
         //----------------------------------------
         cout<<"press enter";getche();
         break;
@@ -152,7 +158,16 @@ void runMenu(int menu) {
         // search music by ID
         //-------------your code here-------------
         cout<<"UNDER MAIN TENIS"<<endl;
-
+        cout<<"Input ID of music :  ";
+        cin>>x.ID;
+        P=findElmByID(L,x);
+        if(P==NULL){
+            cout<<"Music found"<<endl;
+        }else{
+            cout<<" ID      : "<<P->info.ID<<endl;
+            cout<<" Name    : "<<P->info.name<<endl;
+            cout<<" Location: "<<P->info.location<<endl;
+        }
         //----------------------------------------
         cout<<"press enter";getche();
         break;
@@ -173,7 +188,10 @@ void runMenu(int menu) {
         // play previous music
         //-------------your code here-------------
         cout<<"UNDER MAIN TENIS"<<endl;
-
+        if(P!=NULL){
+            P=prev(P);
+            playMusic(P);
+        }
         //----------------------------------------
         break;
     case 11:
